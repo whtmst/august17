@@ -560,8 +560,8 @@
         setInterval(updateCountdown, 1000);
 
         // Переключатели для оверлея
-        const winEpoch = false; // Поменяй на true для показа победы Project Epoch
-        const winTurtle = true; // Поменяй на true для показа победы Turtle WoW
+        const winEpoch = true; // Поменяй на true для показа победы Project Epoch
+        const winTurtle = false; // Поменяй на true для показа победы Turtle WoW
         
         function showOverlay() {
             const overlay = document.getElementById('winOverlay');
@@ -570,7 +570,7 @@
             
             if (winEpoch) {
                 overlay.classList.add('active', 'win-epoch');
-                title.textContent = 'PROJECT EPOCH = WIN';
+                title.textContent = 'PROJECT EPOCH WIN';
                 subtitle.textContent = '';
             } else if (winTurtle) {
                 overlay.classList.add('active', 'win-turtle');
