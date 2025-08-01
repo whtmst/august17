@@ -116,7 +116,7 @@
             padding: 1rem;
             border-radius: 15px;
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.2);
+            /* border: 1px solid rgba(255,255,255,0.2); */
             transition: transform 0.3s ease;
         }
 
@@ -396,20 +396,19 @@
     </div>
 
     <script>
-        // Epoch: считаем от старта до сейчас (прямой отсчет)
+        // Project Epoch: считаем от старта до сейчас (прямой отсчет)
         const epochStartDate = Date.UTC(2025, 6, 26, 0, 0, 0); // 26.07.2025
 
-        // Turtle: считаем до целевой даты (обратный отсчет)
+        // Turtle WoW: считаем до целевой даты (обратный отсчет)
         const turtleTargetDate = Date.UTC(2025, 7, 17, 0, 0, 0); // 17.08.2025
 
         function updateCountdown() {
             const now = new Date().getTime();
             
-            // Epoch countdown (прямой отсчет от старта)
+            // Project Epoch countdown (прямой отсчет от старта)
             const epochDistance = now - epochStartDate;
             
             if (epochDistance < 0) {
-                // Если еще не началось
                 document.getElementById('epochDays').textContent = '00';
                 document.getElementById('epochHours').textContent = '00';
                 document.getElementById('epochMinutes').textContent = '00';
@@ -426,11 +425,10 @@
                 document.getElementById('epochSeconds').textContent = String(epochSeconds).padStart(2, '0');
             }
             
-            // Turtle countdown (обратный отсчет до цели)
+            // Turtle WoW countdown (обратный отсчет до цели)
             const turtleDistance = turtleTargetDate - now;
             
             if (turtleDistance < 0) {
-                // Время истекло
                 document.getElementById('turtleDays').textContent = '00';
                 document.getElementById('turtleHours').textContent = '00';
                 document.getElementById('turtleMinutes').textContent = '00';
@@ -451,17 +449,6 @@
         // Update countdown every second
         updateCountdown();
         setInterval(updateCountdown, 1000);
-
-        // Add some interactive effects
-        document.querySelectorAll('.time-unit').forEach(unit => {
-            unit.addEventListener('mouseenter', () => {
-                unit.style.background = 'rgba(255,255,255,0.2)';
-            });
-            
-            unit.addEventListener('mouseleave', () => {
-                unit.style.background = 'rgba(255,255,255,0.1)';
-            });
-        });
     </script>
 </body>
 </html>
