@@ -340,6 +340,78 @@
                 font-size: 1.8rem;
             }
         }
+
+        .win-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-primary);
+            text-align: center;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        
+        .win-overlay.active {
+            display: flex;
+        }
+        
+        .win-title {
+            font-size: 4rem;
+            font-weight: bold;
+            margin-bottom: 2rem;
+            text-shadow: 0 0 30px currentColor;
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+        
+        .win-subtitle {
+            font-size: 1.5rem;
+            opacity: 0.8;
+            margin-bottom: 3rem;
+        }
+        
+        .win-epoch {
+            color: #4a9eff;
+        }
+        
+        .win-turtle {
+            color: #4ade80;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes pulse-glow {
+            0%, 100% { text-shadow: 0 0 30px currentColor; }
+            50% { text-shadow: 0 0 50px currentColor, 0 0 100px currentColor; }
+        }
+        
+        .close-overlay {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            color: white;
+            padding: 1rem 2rem;
+            font-family: var(--font-primary);
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .close-overlay:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+        
     </style>
 </head>
 <body>
@@ -486,6 +558,46 @@
         // Update countdown every second
         updateCountdown();
         setInterval(updateCountdown, 1000);
+
+        // Переключатели для оверлея
+        const winEpoch = false; // Поменяй на true для показа победы Epoch
+        const winTurtle = false; // Поменяй на true для показа победы Turtle
+        
+        function showOverlay() {
+            const overlay = document.getElementById('winOverlay');
+            const title = document.getElementById('winTitle');
+            const subtitle = document.getElementById('winSubtitle');
+            
+            if (winEpoch) {
+                overlay.classList.add('active', 'win-epoch');
+                title.textContent = 'PROJECT EPOCH = WIN';
+                subtitle.textContent = '';
+            } else if (winTurtle) {
+                overlay.classList.add('active', 'win-turtle');
+                title.textContent = 'TURTLE WOW = WIN';
+                subtitle.textContent = 'Project Epoch servers still down.';
+            }
+        }
+        
+        function closeOverlay() {
+            const overlay = document.getElementById('winOverlay');
+            overlay.classList.remove('active', 'win-epoch', 'win-turtle');
+        }
+        
+        // Показать оверлей при загрузке страницы, если включен один из переключателей
+        window.addEventListener('load', () => {
+            if (winEpoch || winTurtle) {
+                setTimeout(showOverlay, 500); // Небольшая задержка для плавности
+            }
+        });
+    
     </script>
+
+    <div id="winOverlay" class="win-overlay">
+        <div id="winTitle" class="win-title"></div>
+        <div id="winSubtitle" class="win-subtitle"></div>
+        <button class="close-overlay" onclick="closeOverlay()">Close</button>
+    </div>
+    
 </body>
 </html>
