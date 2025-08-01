@@ -124,6 +124,34 @@
             /* transform: scale(1.05); */
         }
 
+        .time-unit-epoch {
+            text-align: center;
+            background: rgba(255,255,255,0.1);
+            padding: 1rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease;
+            border-color: rgba(74, 158, 255, 0.3);
+        }
+
+        .time-unit-turtle {
+            text-align: center;
+            background: rgba(255,255,255,0.1);
+            padding: 1rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease;
+            border-color: rgba(74, 222, 128, 0.3);
+        }
+
+        .time-unit-epoch:hover {
+            border-color: #4a9eff;
+        }
+
+        .time-unit-turtle:hover {
+            border-color: #4ade80;
+        }
+
         .time-number {
             font-size: 2.5rem;
             font-weight: bold;
@@ -316,7 +344,7 @@
             </div>
             
             <div class="countdown" id="epochCountdown">
-                <div class="time-unit">
+                <div class="time-unit-epoch">
                     <span class="time-number" id="epochDays">00</span>
                     <span class="time-label">Days</span>
                 </div>
