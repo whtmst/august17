@@ -10,13 +10,12 @@
     <style>
         :root {
         	/* Colors - Dark Theme (Default) */
-        	--color-background-epoch: #121212;
-            --color-background-turtle: #121212;
+        	--color-background-epoch: linear-gradient(135deg, #1a1a2e 0%, #0f3460 100%);
+            --color-background-turtle: linear-gradient(135deg, #16213e 0%, #0f4c3a 100%);
             
             /* Fonts */
             --font-primary: 'Unbounded', sans-serif;
             --font-secondary: 'IBM Plex Mono', monospace;
-            --font-headings: 'Unbounded', sans-serif;
             --font-emoji: 'Noto Color Emoji', 'Apple Color Emoji', 'Android Emoji', 'Segoe UI Emoji', sans-serif;
         }
         * {
@@ -26,7 +25,7 @@
         }
 
         body {
-            font-family: var(--font-primary);
+            font-family: var(--font-secondary);
             background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
             min-height: 100vh;
             color: #fff;
@@ -51,12 +50,12 @@
         }
 
         .epoch-section {
-            background: linear-gradient(135deg, #1a1a2e 0%, #0f3460 100%);
+            background: var(--color-background-epoch);
             border-right: 2px solid #333;
         }
 
         .turtle-section {
-            background: linear-gradient(135deg, #16213e 0%, #0f4c3a 100%);
+            background: var(--color-background-turtle);
             border-left: 2px solid #333;
         }
 
