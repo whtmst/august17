@@ -13,7 +13,8 @@
         	/* Colors - Dark Theme (Default) */
         	--color-background-epoch: linear-gradient(135deg, #1a1a2e 0%, #0f3460 100%);
             --color-background-turtle: linear-gradient(135deg, #16213e 0%, #0f4c3a 100%);
-            --color-black: #000;
+            --color-black: #000000;
+            --color-white: #ffffff;
             
             /* Fonts */
             --font-primary: 'Unbounded', sans-serif;
@@ -215,16 +216,15 @@
             bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
-            color: white;
+            color: var(--color-white);
             font-size: 0.9rem;
             text-align: center;
             z-index: 20;
-        
-            background-color: rgba(0, 0, 0, 0.5); /* полупрозрачный чёрный фон */
+            background-color: rgba(0, 0, 0, 0.5);
             padding: 0.5em 1em;
             border-radius: 1.5em;
-            backdrop-filter: blur(6px); /* по желанию — добавляет эффект размытия */
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* тень для отделения */
+            backdrop-filter: blur(6px);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
         }
 
         .footer a {
@@ -392,7 +392,7 @@
     </div>
 
     <div class="footer">
-        Made with love ❤️
+        Made with love ❤️ by <a href="https://github.com/whtmst" target="_blank">Wht Mst</a>
     </div>
 
     <script>
