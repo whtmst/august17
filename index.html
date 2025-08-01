@@ -385,8 +385,8 @@
     </div>
 
     <script>
-        // Target date: August 17, 2025
-        const targetDate = new Date('2025-08-17T00:00:00').getTime();
+        // Target UTC date: 2025-08-17 00:00:00
+        const targetDate = Date.UTC(2025, 7, 17, 0, 0, 0);
 
         function updateCountdown() {
             const now = new Date().getTime();
