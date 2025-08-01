@@ -215,10 +215,16 @@
             bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
-            color: var(--color-black);
+            color: white;
             font-size: 0.9rem;
             text-align: center;
             z-index: 20;
+        
+            background-color: rgba(0, 0, 0, 0.5); /* полупрозрачный чёрный фон */
+            padding: 0.5em 1em;
+            border-radius: 1.5em;
+            backdrop-filter: blur(6px); /* по желанию — добавляет эффект размытия */
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* тень для отделения */
         }
 
         .footer a {
@@ -271,12 +277,12 @@
             
             .epoch-section {
                 border-right: none;
-                border-bottom: 2px solid #333;
+                border-bottom: 2px solid #ffffff;
             }
             
             .turtle-section {
                 border-left: none;
-                border-top: 2px solid #333;
+                border-top: 2px solid #ffffff;
             }
             
             .vs-divider {
