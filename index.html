@@ -70,11 +70,8 @@
             margin-bottom: 1rem;
             filter: drop-shadow(2px 2px 8px rgba(0,0,0,0.8));
             transition: all 0.3s ease;
-        }
-
-        .server-logo:hover {
-            transform: scale(1.05);
-            filter: drop-shadow(2px 2px 12px rgba(0,0,0,0.9));
+            align-self: center;
+            flex-shrink: 0;
         }
 
         .epoch-logo {
@@ -83,14 +80,6 @@
 
         .turtle-logo {
             filter: drop-shadow(2px 2px 8px rgba(74, 222, 128, 0.3));
-        }
-
-        .epoch-logo:hover {
-            filter: drop-shadow(2px 2px 12px rgba(74, 158, 255, 0.5));
-        }
-
-        .turtle-logo:hover {
-            filter: drop-shadow(2px 2px 12px rgba(74, 222, 128, 0.5));
         }
 
         @keyframes glow {
@@ -203,6 +192,27 @@
             50% { transform: translate(-50%, -50%) scale(1.1); }
         }
 
+        .footer {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+            text-align: center;
+            z-index: 20;
+        }
+
+        .footer a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer a:hover {
+            color: #fff;
+        }
+
         .subtitle {
             font-size: 1.2rem;
             opacity: 0.8;
@@ -256,8 +266,9 @@
                 left: 50%;
             }
             
-            .server-title {
-                font-size: 2rem;
+            .server-logo {
+                width: 240px;
+                height: 100px;
             }
             
             .countdown {
@@ -345,6 +356,10 @@
                 </a>
             </div>
         </div>
+    </div>
+
+    <div class="footer">
+        Made with love by <a href="https://github.com/whtmst" target="_blank">Wht Mst</a>
     </div>
 
     <script>
