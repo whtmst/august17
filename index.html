@@ -396,35 +396,56 @@
     </div>
 
     <script>
-        // Target UTC date: 2025-08-17 00:00:00
-        const targetDate = Date.UTC(2025, 7, 17, 0, 0, 0);
+        // Epoch: считаем от старта до сейчас (прямой отсчет)
+        const epochStartDate = Date.UTC(2025, 6, 26, 0, 0, 0); // 26.07.2025
+
+        // Turtle: считаем до целевой даты (обратный отсчет)
+        const turtleTargetDate = Date.UTC(2025, 7, 17, 0, 0, 0); // 17.08.2025
 
         function updateCountdown() {
             const now = new Date().getTime();
-            const distance = targetDate - now;
+            
+            // Epoch countdown (прямой отсчет от старта)
+            const epochDistance = now - epochStartDate;
+            
+            if (epochDistance < 0) {
+                // Если еще не началось
+                document.getElementById('epochDays').textContent = '00';
+                document.getElementById('epochHours').textContent = '00';
+                document.getElementById('epochMinutes').textContent = '00';
+                document.getElementById('epochSeconds').textContent = '00';
+            } else {
+                const epochDays = Math.floor(epochDistance / (1000 * 60 * 60 * 24));
+                const epochHours = Math.floor((epochDistance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const epochMinutes = Math.floor((epochDistance % (1000 * 60 * 60)) / (1000 * 60));
+                const epochSeconds = Math.floor((epochDistance % (1000 * 60)) / 1000);
 
-            if (distance < 0) {
-                // Countdown finished
-                document.querySelectorAll('.time-number').forEach(el => el.textContent = '00');
-                return;
+                document.getElementById('epochDays').textContent = String(epochDays).padStart(2, '0');
+                document.getElementById('epochHours').textContent = String(epochHours).padStart(2, '0');
+                document.getElementById('epochMinutes').textContent = String(epochMinutes).padStart(2, '0');
+                document.getElementById('epochSeconds').textContent = String(epochSeconds).padStart(2, '0');
             }
+            
+            // Turtle countdown (обратный отсчет до цели)
+            const turtleDistance = turtleTargetDate - now;
+            
+            if (turtleDistance < 0) {
+                // Время истекло
+                document.getElementById('turtleDays').textContent = '00';
+                document.getElementById('turtleHours').textContent = '00';
+                document.getElementById('turtleMinutes').textContent = '00';
+                document.getElementById('turtleSeconds').textContent = '00';
+            } else {
+                const turtleDays = Math.floor(turtleDistance / (1000 * 60 * 60 * 24));
+                const turtleHours = Math.floor((turtleDistance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const turtleMinutes = Math.floor((turtleDistance % (1000 * 60 * 60)) / (1000 * 60));
+                const turtleSeconds = Math.floor((turtleDistance % (1000 * 60)) / 1000);
 
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            // Update Epoch countdown
-            document.getElementById('epochDays').textContent = String(days).padStart(2, '0');
-            document.getElementById('epochHours').textContent = String(hours).padStart(2, '0');
-            document.getElementById('epochMinutes').textContent = String(minutes).padStart(2, '0');
-            document.getElementById('epochSeconds').textContent = String(seconds).padStart(2, '0');
-
-            // Update Turtle countdown (same values)
-            document.getElementById('turtleDays').textContent = String(days).padStart(2, '0');
-            document.getElementById('turtleHours').textContent = String(hours).padStart(2, '0');
-            document.getElementById('turtleMinutes').textContent = String(minutes).padStart(2, '0');
-            document.getElementById('turtleSeconds').textContent = String(seconds).padStart(2, '0');
+                document.getElementById('turtleDays').textContent = String(turtleDays).padStart(2, '0');
+                document.getElementById('turtleHours').textContent = String(turtleHours).padStart(2, '0');
+                document.getElementById('turtleMinutes').textContent = String(turtleMinutes).padStart(2, '0');
+                document.getElementById('turtleSeconds').textContent = String(turtleSeconds).padStart(2, '0');
+            }
         }
 
         // Update countdown every second
