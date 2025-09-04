@@ -12,16 +12,16 @@
         :root {
         	/* Colors - Dark Theme (Default) */
         	--color-background-epoch: linear-gradient(135deg, #1a1a2e 0%, #0f3460 100%);
-            --color-background-turtle: linear-gradient(135deg, #100d0c 0%, #262120 100%);
+            --color-background-turtle: linear-gradient(135deg, #16213e 0%, #0f4c3a 100%);
             --color-black: #000000;
             --color-white: #ffffff;
-            
+
             /* Fonts */
             --font-primary: 'Unbounded', sans-serif;
             --font-secondary: 'IBM Plex Mono', monospace;
             --font-emoji: 'Noto Color Emoji', 'Apple Color Emoji', 'Android Emoji', 'Segoe UI Emoji', sans-serif;
         }
-        
+
         * {
             margin: 0;
             padding: 0;
@@ -158,7 +158,7 @@
         }
 
         .time-unit-turtle:hover {
-            border-color: #429631;
+            border-color: #4ade80;
         }
 
         .time-number {
@@ -216,7 +216,7 @@
         }
 
         .turtle-section .link-btn:hover {
-            border-color: #429631;
+            border-color: #4ade80;
             box-shadow: 0 5px 15px rgba(74, 222, 128, 0.3);
         }
 
@@ -295,7 +295,7 @@
         }
 
         .status-online {
-            background-color: #429631;
+            background-color: #44ff44;
         }
 
         @keyframes blink {
@@ -307,35 +307,35 @@
             .container {
                 flex-direction: column;
             }
-            
+
             .server-section {
                 min-height: 50vh;
             }
-            
+
             .epoch-section {
                 border-right: none;
                 border-bottom: 2px solid #ffffff;
             }
-            
+
             .turtle-section {
                 border-left: none;
                 border-top: 2px solid #ffffff;
             }
-            
+
             .vs-divider {
                 top: 50%;
                 left: 50%;
             }
-            
+
             .server-logo {
                 width: 240px;
                 height: 100px;
             }
-            
+
             .countdown {
                 grid-template-columns: repeat(2, 1fr);
             }
-            
+
             .time-number {
                 font-size: 1.8rem;
             }
@@ -358,11 +358,11 @@
             text-align: center;
             animation: fadeIn 0.5s ease-in-out;
         }
-        
+
         .win-overlay.active {
             display: flex;
         }
-        
+
         .win-title {
             font-size: 4rem;
             font-weight: bold;
@@ -370,31 +370,31 @@
             text-shadow: 0 0 30px currentColor;
             animation: pulse-glow 2s ease-in-out infinite;
         }
-        
+
         .win-subtitle {
             font-size: 1.5rem;
             opacity: 0.8;
             margin-bottom: 3rem;
         }
-        
+
         .win-epoch {
             color: #4a9eff;
         }
-        
+
         .win-turtle {
-            color: #429631;
+            color: #4ade80;
         }
-        
+
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
         }
-        
+
         @keyframes pulse-glow {
             0%, 100% { text-shadow: 0 0 30px currentColor; }
             50% { text-shadow: 0 0 50px currentColor, 0 0 100px currentColor; }
         }
-        
+
         .close-overlay {
             background: rgba(255, 255, 255, 0.1);
             border: 2px solid rgba(255, 255, 255, 0.3);
@@ -406,12 +406,12 @@
             cursor: pointer;
             transition: all 0.3s ease;
         }
-        
+
         .close-overlay:hover {
             background: rgba(255, 255, 255, 0.2);
             border-color: rgba(255, 255, 255, 0.5);
         }
-        
+
     </style>
 </head>
 <body>
@@ -423,7 +423,7 @@
                 <span class="status-indicator status-offline"></span>
                 Servers are down since July 26th
             </div>
-            
+
             <div class="countdown" id="epochCountdown">
                 <div class="time-unit-epoch">
                     <span class="time-number" id="epochDays">00</span>
@@ -442,7 +442,7 @@
                     <span class="time-label">Seconds</span>
                 </div>
             </div>
-            
+
             <div class="links">
                 <a href="https://project-epoch-status.com/" target="_blank" class="link-btn">
                     📊 Servers Status
@@ -466,7 +466,7 @@
                 <span class="status-indicator status-online"></span>
                 Ambershire RP-PvE will launch on August 17th
             </div>
-            
+
             <div class="countdown" id="turtleCountdown">
                 <div class="time-unit-turtle">
                     <span class="time-number" id="turtleDays">00</span>
@@ -485,7 +485,7 @@
                     <span class="time-label">Seconds</span>
                 </div>
             </div>
-            
+
             <div class="links">
                 <a href="https://forum.turtle-wow.org/viewtopic.php?t=20603" target="_blank" class="link-btn">
                     📊 Server Status
@@ -513,10 +513,10 @@
 
         function updateCountdown() {
             const now = new Date().getTime();
-            
+
             // Project Epoch countdown (direct count from start)
             const epochDistance = now - epochStartDate;
-            
+
             if (epochDistance < 0) {
                 document.getElementById('epochDays').textContent = '00';
                 document.getElementById('epochHours').textContent = '00';
@@ -533,10 +533,10 @@
                 document.getElementById('epochMinutes').textContent = String(epochMinutes).padStart(2, '0');
                 document.getElementById('epochSeconds').textContent = String(epochSeconds).padStart(2, '0');
             }
-            
+
             // Turtle WoW countdown (reverse count to target)
             const turtleDistance = turtleTargetDate - now;
-            
+
             if (turtleDistance < 0) {
                 document.getElementById('turtleDays').textContent = '00';
                 document.getElementById('turtleHours').textContent = '00';
@@ -562,12 +562,12 @@
         // Toggles for overlay
         const winEpoch = false; // Change to true to show Project Epoch victory
         const winTurtle = true; // Change to true to show Turtle WoW victory
-        
+
         function showOverlay() {
             const overlay = document.getElementById('winOverlay');
             const title = document.getElementById('winTitle');
             const subtitle = document.getElementById('winSubtitle');
-            
+
             if (winEpoch) {
                 overlay.classList.add('active', 'win-epoch');
                 title.textContent = 'PROJECT EPOCH WINS THE RACE!';
@@ -578,19 +578,19 @@
                 subtitle.innerHTML = 'Let\'s go <a href="https://turtle-wow.org/" target="_blank" style="color: inherit; text-decoration: underline;">turtle-wow.org</a>!';
             }
         }
-        
+
         function closeOverlay() {
             const overlay = document.getElementById('winOverlay');
             overlay.classList.remove('active', 'win-epoch', 'win-turtle');
         }
-        
+
         // Show overlay on page load if one of the toggles is enabled
         window.addEventListener('load', () => {
             if (winEpoch || winTurtle) {
                 setTimeout(showOverlay, 500); // Small delay for smoothness
             }
         });
-    
+
     </script>
 
     <div id="winOverlay" class="win-overlay">
@@ -598,6 +598,6 @@
         <div id="winSubtitle" class="win-subtitle"></div>
         <button class="close-overlay" onclick="closeOverlay()">Close</button>
     </div>
-    
+
 </body>
 </html>
